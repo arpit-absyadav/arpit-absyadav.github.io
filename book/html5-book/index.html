@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <title>The Microworld Miracle</title>
+    <script type="text/javascript" src="../jquery/jquery.min.1.7.js"></script>
+    <script
+      type="text/javascript"
+      src="../jquery/jquery-ui-1.8.20.custom.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../jquery/jquery.mousewheel.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../jquery/modernizr.2.5.3.min.js"
+    ></script>
+    <script type="text/javascript" src="../js/hash.js"></script>
+  </head>
+  <body>
+    <div id="canvas">
+      <div id="book-zoom">
+        <div class="mybook" id="myBook">
+          <div depth="5" class="hard"><div class="side"></div></div>
+          <!-- page 1 -->
+          <div depth="5" class="hard front-side"><div class="depth"></div></div>
+          <!-- page 2 -->
+          <div class="own-size"></div>
+          <!-- page 3 -->
+          <div class="own-size even"></div>
+          <!-- page 4 -->
+          <div class="hard fixed back-side p43"><div class="depth"></div></div>
+          <!-- page 43 -->
+          <div class="hard p44"></div>
+          <!-- page 44 -->
+        </div>
+      </div>
+      <div class="bottom">
+        <div id="slider-bar" class="fpf-slider">
+          <div id="slider"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function loadApp() {
+        var flipbook = $('.mybook');
+
+        // Check if the CSS was already loaded
+
+        if (flipbook.width() == 0 || flipbook.height() == 0) {
+          setTimeout(loadApp, 10);
+          return;
+        }
+
+        // Mousewheel
+
+        $('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+          var data = $(this).data(),
+            step = 30,
+            flipbook = $('.mybook'),
+            actualPos = $('#slider').slider('value') * step;
+
+          if (typeof data.scrollX === 'undefined') {
+            data.scrollX = actualPos;
+            data.scrollPage = flipbook.turn('page');
+          }
+
+          data.scrollX = Math.min(
+            $('#slider').slider('option', 'max') * step,
+            Math.max(0, data.scrollX + deltaX)
+          );
+
+          var actualView = Math.round(data.scrollX / step),
+            page = Math.min(
+              flipbook.turn('pages'),
+              Math.max(1, actualView * 2 - 2)
+            );
+
+          if ($.inArray(data.scrollPage, flipbook.turn('view', page)) == -1) {
+            data.scrollPage = page;
+            flipbook.turn('page', page);
+          }
+
+          if (data.scrollTimer) clearInterval(data.scrollTimer);
+
+          data.scrollTimer = setTimeout(function() {
+            data.scrollX = undefined;
+            data.scrollPage = undefined;
+            data.scrollTimer = undefined;
+          }, 1000);
+        });
+
+        // Slider
+
+        $('#slider').slider({
+          min: 1,
+          max: 100,
+
+          start: function(event, ui) {
+            if (!window._thumbPreview) {
+              _thumbPreview = $('<div />', { class: 'thumbnail' }).html(
+                '<div></div>'
+              );
+              setPreview(ui.value);
+              _thumbPreview.appendTo($(ui.handle));
+            } else setPreview(ui.value);
+
+            moveBar(false);
+          },
+
+          slide: function(event, ui) {
+            setPreview(ui.value);
+          },
+
+          stop: function() {
+            if (window._thumbPreview) _thumbPreview.removeClass('show');
+
+            $('.mybook').turn(
+              'page',
+              Math.max(1, $(this).slider('value') * 2 - 2)
+            );
+          }
+        });
+
+        // URIs
+
+        Hash.on('^page\/([0-9]*)$', {
+          yep: function(path, parts) {
+            var page = parts[1];
+
+            if (page !== undefined) {
+              if ($('.mybook').turn('is')) $('.mybook').turn('page', page);
+            }
+          },
+          nop: function(path) {
+            if ($('.mybook').turn('is')) $('.mybook').turn('page', 1);
+          }
+        });
+
+        // Arrows
+
+        $(document).keydown(function(e) {
+          var previous = 37,
+            next = 39;
+
+          switch (e.keyCode) {
+            case previous:
+              $('.mybook').turn('previous');
+
+              break;
+            case next:
+              $('.mybook').turn('next');
+
+              break;
+          }
+        });
+
+        // Flipbook
+
+        flipbook.bind($.isTouch ? 'touchend' : 'click', zoomHandle);
+
+        flipbook.turn({
+          elevation: 50,
+          acceleration: !isChrome(),
+          autoCenter: true,
+          gradients: true,
+          duration: 750,
+          pages: 44,
+          //width: 900,
+          //height:600,
+          //sa�dan sola
+          //direction: "rtl",
+          //tek sayfa
+          //display: "single",
+          //page:34,
+          when: {
+            turning: function(e, page, view) {
+              var book = $(this),
+                currentPage = book.turn('page'),
+                pages = book.turn('pages');
+
+              //automatic page numbers
+              /*if (page%2 == 0) {
+					$('.even .page-number').text(page);
+					$('.odd .page-number').text(page+1);
+				} else {
+					$('.even .page-number').text(page-1);
+					$('.odd .page-number').text(page);
+				}*/
+              //
+
+              if (currentPage > 3 && currentPage < pages - 3) {
+                if (page == 1) {
+                  book
+                    .turn('page', 2)
+                    .turn('stop')
+                    .turn('page', page);
+                  e.preventDefault();
+                  return;
+                } else if (page == pages) {
+                  book
+                    .turn('page', pages - 1)
+                    .turn('stop')
+                    .turn('page', page);
+                  e.preventDefault();
+                  return;
+                }
+              } else if (page > 3 && page < pages - 3) {
+                if (currentPage == 1) {
+                  book
+                    .turn('page', 2)
+                    .turn('stop')
+                    .turn('page', page);
+                  e.preventDefault();
+                  return;
+                } else if (currentPage == pages) {
+                  book
+                    .turn('page', pages - 1)
+                    .turn('stop')
+                    .turn('page', page);
+                  e.preventDefault();
+                  return;
+                }
+              }
+
+              updateDepth(book, page);
+
+              if (page >= 2) $('.mybook .p2').addClass('fixed');
+              else $('.mybook .p2').removeClass('fixed');
+
+              if (page < book.turn('pages'))
+                $('.mybook .p43').addClass('fixed');
+              else $('.mybook .p43').removeClass('fixed');
+
+              Hash.go('page/' + page).update();
+            },
+
+            turned: function(e, page, view) {
+              var book = $(this);
+
+              if (page == 2 || page == 3) {
+                book.turn('peel', 'br');
+              }
+
+              updateDepth(book);
+
+              $('#slider').slider('value', getViewNumber(book, page));
+
+              book.turn('center');
+
+              //current page
+              var view = $('.mybook')
+                .turn('view')
+                .join(' - ');
+
+              if ($(this).turn('page') == $(this).turn('pages')) {
+                view = $(this).turn('pages');
+              } else if ($(this).turn('page') == 1) {
+                view = 1;
+              }
+
+              $('#pageNums').html(view + ' / ' + $(this).turn('pages'));
+            },
+
+            start: function(e, pageObj) {
+              moveBar(true);
+            },
+
+            end: function(e, pageObj) {
+              var book = $(this);
+
+              updateDepth(book);
+
+              setTimeout(function() {
+                $('#slider').slider('value', getViewNumber(book));
+              }, 1);
+
+              moveBar(false);
+            },
+
+            missing: function(e, pages) {
+              for (var i = 0; i < pages.length; i++) {
+                addPage(pages[i], $(this));
+              }
+            }
+          }
+        });
+
+        $(window)
+          .resize(function() {
+            resizeViewport();
+          })
+          .bind('orientationchange', function() {
+            resizeViewport();
+          });
+
+        $('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+        flipbook.addClass('animated');
+
+        // Show canvas
+
+        $('#canvas').css({ visibility: '' });
+
+        centerBook();
+      }
+
+      // Hide canvas
+
+      $('#canvas').css({ visibility: 'hidden' });
+
+      // Load flip.js
+
+      yepnope({
+        test: Modernizr.csstransforms,
+        yep: ['../js/flip.min.js'],
+        nope: [
+          '../js/flip.html4.min.js',
+          'css/jquery.ui.html4.css',
+          'css/mybook-html4.css'
+        ],
+        both: ['js/mybook.js', 'css/jquery.ui.css', 'css/mybook.css'],
+        complete: loadApp
+      });
+
+      $(window).resize(function() {
+        centerBook();
+      });
+
+      function centerBook() {
+        var size = $('.mybook').turn('size');
+        var topPosBook = ($(window).height() - 50 - size.height) / 2;
+        if (topPosBook > 0) {
+          $('#canvas').css('marginTop', topPosBook + 'px');
+        } else {
+          $('#canvas').css('marginTop', 0);
+        }
+      }
+
+      function nextPage() {
+        $('.mybook').turn('next');
+      }
+
+      function previousPage() {
+        $('.mybook').turn('previous');
+      }
+
+      function frontCover() {
+        $('.mybook').turn('page', 1);
+      }
+
+      function backCover() {
+        $('.mybook').turn('page', $('.mybook').turn('pages'));
+      }
+    </script>
+
+    <div id="footer">
+      <div id="navcontainer">
+        <ul id="navlist">
+          <li></li>
+          <li class="nav-front"><a href="javascript:frontCover();"></a></li>
+          <li class="nav-prev"><a href="javascript:previousPage();"></a></li>
+          <li
+            id="pageNums"
+            style="font-family:tahoma; font-size:0.9em; display: inline-block; width:100px"
+          >
+            ...
+          </li>
+          <li class="nav-next"><a href="javascript:nextPage();"></a></li>
+          <li class="nav-back"><a href="javascript:backCover();"></a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
