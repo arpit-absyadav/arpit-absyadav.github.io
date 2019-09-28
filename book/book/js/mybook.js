@@ -25,7 +25,9 @@ function updateDepth(book, newPage) {
 }
 
 function loadPage(page) {
-  $.ajax({ url: 'pages/page' + page + '.html' }).done(function(pageHtml) {
+  $.ajax({ url: 'poems.html' }).done(function(pageHtml) {
+    console.log(pageHtml);
+
     $('.mybook .p' + page).html(pageHtml.replace('book/', ''));
   });
 }
