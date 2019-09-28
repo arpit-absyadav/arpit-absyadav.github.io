@@ -24,21 +24,22 @@ function updateDepth(book, newPage) {
   else $('.mybook .p43 .depth').css({ width: 0 });
 }
 
-function loadPage(page) {
-  $.ajax({ url: 'pages/page' + page + '.html' }).done(function(pageHtml) {
-    $('.mybook .p' + page).html(pageHtml.replace('book/', ''));
-  });
-}
-
 // function loadPage(page) {
-//   $.ajax({ url: 'https://arpit-absyadav.github.io/poems.html' }).done(function(
-//     pageHtml
-//   ) {
-//     console.log(pageHtml);
-
+//   $.ajax({ url: 'pages/page' + page + '.html' }).done(function(pageHtml) {
 //     $('.mybook .p' + page).html(pageHtml.replace('book/', ''));
 //   });
 // }
+
+function loadPage(page) {
+  $.ajax({
+    url:
+      'https://arpit-absyadav.github.io/book/book/pages/page' + page + '.html'
+  }).done(function(pageHtml) {
+    console.log(pageHtml);
+
+    $('.mybook .p' + page).html(pageHtml.replace('book/', ''));
+  });
+}
 
 function addPage(page, book) {
   var id,
