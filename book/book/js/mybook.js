@@ -35,7 +35,7 @@ function loadPage(page) {
     url:
       'https://arpit-absyadav.github.io/book/book/pages/page' + page + '.html'
   }).done(function(pageHtml) {
-    console.log(pageHtml);
+    // console.log(pageHtml);
 
     $('.mybook .p' + page).html(pageHtml.replace('book/', ''));
   });
