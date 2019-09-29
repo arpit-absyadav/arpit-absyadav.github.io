@@ -516,3 +516,8 @@ body {
 	bottom:60px;
 	width:100%;
 }
+
+/* hindi font for writing */
+.hindi{
+	font-family: 'Kalam', cursive;
+}
