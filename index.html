@@ -486,6 +486,32 @@
             </div>
           </div>
         </section>
+
+        <!-- Include the library. -->
+<script
+  src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"
+></script>
+
+<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+<link
+   rel="stylesheet"
+   href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+/>
+
+<!-- Prepare a container for your calendar. -->
+<section class="ftco-section">
+<div class="container">
+<div class="calendar">
+    <!-- Loading stuff -->
+    Loading stats.
+</div>
+</div>
+</section>
+<script>
+    // or enable responsive functionality
+    GitHubCalendar(".calendar", "arpit-absyadav", { responsive: true });
+</script>
+
         <footer class="ftco-footer ftco-bg-dark ftco-section">
           <div class="container">
             <div class="row mb-5 justify-content-center">
