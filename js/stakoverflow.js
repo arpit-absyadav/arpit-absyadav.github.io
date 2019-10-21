@@ -1,8 +1,6 @@
 // https://api.stackexchange.com/docs/badges-on-users#order=desc&sort=rank&ids=2165443&filter=default&site=stackoverflow
 
-console.log('inside');
-
-var userid = 2165443; // which userid to use
+const userId = 2165443; // which userid to use
 
 // ajax calls
 var xhr = new XMLHttpRequest();
@@ -11,13 +9,13 @@ var xhr = new XMLHttpRequest();
 xhr.open(
   'GET',
   'https://api.stackexchange.com/2.2/users/' +
-    userid +
+    userId +
     '/badges?order=desc&sort=rank&site=stackoverflow'
 );
 xhr.onload = function(e) {
   if (this.status == 200) {
     const resp = JSON.parse(this.response); // JSON response
-    console.log(resp.items);
+    // console.log(resp.items);
 
     document.getElementById('reputation-number').innerHTML =
       resp.items[0].user.reputation;
@@ -26,7 +24,7 @@ xhr.onload = function(e) {
       const element = resp.items[i];
       awardCounts = +awardCounts + Number(element.award_count);
       const badge = "<div class='badge-stack'>" + element.name + '</div>'; // Create text with HTML
-      console.log(badge);
+      // console.log(badge);
 
       $('#badge-name').append(badge);
     }
