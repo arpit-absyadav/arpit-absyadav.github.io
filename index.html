@@ -27,18 +27,27 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <script type='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>
-  <script type='text/javascript'>
-    SE.init({
-      clientId: 1,
-      key: "xZgG8pUtsHg0Lrg)OkHm4Q((",
-      channelUrl: 'https://arpit-absyadav.github.io/',
-      complete: function (data) {
-        console.log(data);
 
-      }
-    });
-  </script>
   <style>
+    strong {
+      color: #2f89fc;
+    }
+
+    .badge-stack {
+      color: #2f89fc;
+      border: 1px solid #2f89fc;
+      border-radius: 8px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 8px;
+      padding-right: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      float: left;
+    }
+
     @font-face {
       font-family: handwriting;
       src: url(Satisfy-Regular.ttf);
@@ -460,6 +469,73 @@
         });
       </script>
 
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+              <span>Stackoverflow</span>
+              <h2>Statistics</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services p-3 py-4 d-block text-center">
+                <div class="icon mb-3">
+                  <!-- <span class="ion-logo-angular"></span> -->
+                </div>
+                <div class="media-body">
+                  <div class="block-18">
+                    <div class="text">
+                      <span class="ftco-label">Reputation</span>
+                      <strong id="reputation-number">0</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services p-3 py-4 d-block text-center">
+                <div class="icon mb-3"><span class=""></span></div>
+                <div class="media-body">
+                  <div class="block-18">
+                    <div class="text">
+                      <span class="ftco-label">Total Awards</span>
+                      <strong id="awards-counts">0</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+              <div class="media block-6 services p-3 py-4 d-block text-center">
+                <div class="media-body">
+                  <div class="block-18">
+                    <div class="text">
+                      <span class="ftco-label">Impact</span>
+                      <strong class="number">~8k</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List badged -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 d-flex align-self-stretch ftco-animate">
+                <div class="media  text-center">
+                  <div class="media-body" id="badge-name">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       <footer class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
           <div class="row mb-5 justify-content-center">
@@ -517,6 +593,8 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/main.js"></script>
+
 </body>
+<script src="js/stakoverflow.js"></script>
 
 </html>
