@@ -9,13 +9,12 @@ var xhr = new XMLHttpRequest();
 xhr.open(
   'GET',
   'https://api.stackexchange.com/2.2/users/' +
-    userId +
-    '/badges?order=desc&sort=rank&site=stackoverflow'
+  userId +
+  '/badges?order=desc&sort=rank&site=stackoverflow'
 );
-xhr.onload = function(e) {
+xhr.onload = function (e) {
   if (this.status == 200) {
     const resp = JSON.parse(this.response); // JSON response
-    // console.log(resp.items);
 
     document.getElementById('reputation-number').innerHTML =
       resp.items[0].user.reputation;
