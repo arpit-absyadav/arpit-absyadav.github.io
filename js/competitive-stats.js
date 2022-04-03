@@ -9,8 +9,8 @@ var xhr = new XMLHttpRequest();
 xhr.open(
   'GET',
   'https://api.stackexchange.com/2.2/users/' +
-  userId +
-  '/badges?order=desc&sort=rank&site=stackoverflow'
+    userId +
+    '/badges?order=desc&sort=rank&site=stackoverflow',
 );
 xhr.onload = function (e) {
   if (this.status == 200) {
@@ -31,3 +31,20 @@ xhr.onload = function (e) {
   }
 };
 xhr.send();
+
+// Leet Code
+var xhr1 = new XMLHttpRequest();
+// notice the page parameter here
+// here the actual api call is created
+xhr1.open(
+  'GET',
+  'https://leetcode.card.workers.dev/?username=arpit-absyadav&theme=dark',
+);
+xhr1.onload = function (e) {
+  if (this.status == 200) {
+    // const resp = JSON.parse(this.response); // JSON response
+    console.log('ffffffffffff', this.response);
+    document.getElementById('leet_code').innerHTML = this.response;
+  }
+};
+xhr1.send();
