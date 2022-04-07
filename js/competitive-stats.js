@@ -45,6 +45,7 @@ xhr1.onload = function (e) {
     // const resp = JSON.parse(this.response); // JSON response
     console.log('ffffffffffff', this.response);
     document.getElementById('leet_code').innerHTML = this.response;
+    document.getElementById('leet_code1').innerHTML = this.response;
   }
 };
 xhr1.send();
