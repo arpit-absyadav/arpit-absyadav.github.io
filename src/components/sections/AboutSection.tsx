@@ -28,7 +28,7 @@ export default function AboutSection() {
           <div>
             <TerminalSection title="about">
               <div className="text-[#00ff00]">
-                <p className="mb-2">{'>'} Location: Gurgaon, India</p>
+                <p className="mb-2">{'>'} Location: Gurgaon, India</p> 
                 <p className="mb-2">{'>'} Email: arpit.absyadav@gmail.com</p>
                 <p className="mb-2">{'>'} Website: arpit-absyadav.github.io</p>
                 <p className="mb-2">{'>'} GitHub: github.com/arpit-absyadav</p>
