@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 123 70% 50%;
+    --accent-foreground: 0 0% 0%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 123 70% 50%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 123 70% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 123 70% 50%;
+    
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-family: 'Fira Code', monospace;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background-color: #0a0a0a;
+    background-image: 
+      radial-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+      radial-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+@layer components {
+  .text-glitch {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .text-glitch::before,
+  .text-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-glitch::before {
+    left: -2px;
+    text-shadow: 2px 0 #00ff00;
+    animation: glitch-animation 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+  
+  .text-glitch::after {
+    left: 2px;
+    text-shadow: -2px 0 #ff00ff;
+    animation: glitch-animation 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+  
+  @keyframes glitch-animation {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    }
+    20% {
+      clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
+    }
+    40% {
+      clip-path: polygon(0 35%, 100% 35%, 100% 65%, 0 65%);
+    }
+    60% {
+      clip-path: polygon(0 65%, 100% 65%, 100% 85%, 0 85%);
+    }
+    80% {
+      clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    }
+  }
+  
+  .terminal-text {
+    @apply relative pl-6 inline-block;
+  }
+  
+  .terminal-text::before {
+    content: ">";
+    @apply absolute left-0 text-[#00ff00];
+  }
+  
+  .typing-animation {
+    overflow: hidden;
+    border-right: 2px solid #00ff00;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end),
+               blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff00 }
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+  }
+  
+  .hacker-border {
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+  
+  .hacker-bg {
+    background-color: rgba(0, 20, 0, 0.8);
+  }
+  
+  .matrix-code {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text y="0.9em" font-size="20" fill="rgba(0,255,0,0.1)">1 0</text><text x="25" y="0.9em" font-size="20" fill="rgba(0,255,0,0.1)">0 1</text><text y="1.8em" font-size="20" fill="rgba(0,255,0,0.1)">0 1</text><text x="25" y="1.8em" font-size="20" fill="rgba(0,255,0,0.1)">1 0</text></svg>');
+    opacity: 0.07;
+  }
+}
