@@ -13,7 +13,7 @@ export default function AboutSection() {
           <div>
             <h3 className="text-xl font-mono text-[#00ff00] mb-4 terminal-text">Profile</h3>
             <p className="mb-4 text-muted-foreground">
-              Backend-Heavy Full Stack Engineer with 8+ years of experience building scalable distributed systems and SaaS platforms across environments.
+              Backend-Heavy Full Stack & DevOps Engineer with 8+ years of experience building scalable distributed systems and SaaS platforms across environments.
             </p>
             <p className="mb-4 text-muted-foreground">
               Designed systems handling 500K+ requests/min and 10M+ events/day with focus on reliability and high availability.

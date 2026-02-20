@@ -19,7 +19,7 @@ export default function HeroSection() {
           <div className="h-px w-40 bg-gradient-to-r from-transparent via-[#00ff00] to-transparent my-4"></div>
           
           <h2 className="text-xl md:text-2xl lg:text-3xl text-[#00ff00] font-light tracking-widest typing-animation">
-            SDE 3 | BACKEND-HEAVY FULL STACK ENGINEER
+            SDE 3 | BACKEND-HEAVY FULL STACK & DEVOPS ENGINEER
           </h2>
 
           <p className="max-w-2xl text-muted-foreground">
