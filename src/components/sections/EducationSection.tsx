@@ -20,18 +20,18 @@ const educationData: Education[] = [
     institution: "Abdul Kalam University (Former UPTU), Lucknow",
     period: "2016 - 2018",
   },
-  {
-    degree: "Diploma In Computer Application",
-    institution: "NIIT",
-    period: "2019",
-  },
 ];
 
 const certificateData: Certificate[] = [
   {
-    name: "GoLang - The Complete Guide",
+    name: "Diploma in Computer Applications",
+    issuer: "NIIT",
+    year: "",
+  },
+  {
+    name: "Golang - The Complete Guide",
     issuer: "Udemy",
-    year: "2021",
+    year: "",
   },
 ];
 
@@ -74,9 +74,11 @@ export default function EducationSection() {
                     <CardTitle className="text-[#00ff00]">{cert.name}</CardTitle>
                     <CardDescription>{cert.issuer}</CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm font-mono text-muted-foreground">{cert.year}</p>
-                  </CardContent>
+                  {cert.year && (
+                    <CardContent>
+                      <p className="text-sm font-mono text-muted-foreground">{cert.year}</p>
+                    </CardContent>
+                  )}
                 </Card>
               ))}
             </div>

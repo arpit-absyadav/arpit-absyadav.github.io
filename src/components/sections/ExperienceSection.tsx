@@ -14,15 +14,16 @@ const experiences: Experience[] = [
   {
     title: "SDE 3",
     company: "Zemoso",
-    period: "July 2024 - Present",
+    period: "July 2024 - Nov 2025",
     description: [
-      "Spearheaded the Telematics module, designing and maintaining scalable real-time data pipelines that processed 10M+ sensor events/day from over 15,000+ connected trucks/trailers.",
-      "Led a team of 4 developers, overseeing daily task management, code reviews, delivery planning, and technical decision-making to ensure quality and efficiency.",
-      "Contributed to release and deployment processes, supporting codebase migration, optimising GitLab CI/CD pipelines.",
-      "Redesigned components of AppSmith's open-source architecture using Node.js, React, Material UI, and Atomic Design principles.",
-      "Automated business workflows for Wabash using Power Automate, cutting manual effort by over 70% and boosting operational efficiency."
+      "Architected a real-time telematics platform processing 10M+ events/day from 15,000+ connected vehicles, enabling time-series analytics and fault detection.",
+      "Built distributed, event-driven pipelines using Kafka, Node.js, and Redis to ensure low-latency ingestion and horizontal scalability.",
+      "Guided a team of 4 engineers, driving architecture decisions, code reviews, and delivery execution.",
+      "Contributed to SOC 2 compliance through secure coding practices, audit logging, and CI/CD governance.",
+      "Refactored App Smith core components using Node.js and React (Atomic Design) to improve modularity and frontend performance.",
+      "Automated enterprise workflows using Power Automate, reducing manual effort by 70%."
     ],
-    technologies: ["Node.js", "NestJS", "React", "Material UI", "GitLab CI/CD", "Power Automate", "PostgreSQL", "JavaScript", "Redis", "Kafka", "Kubernetes"]
+    technologies: ["Node.js", "JavaScript", "TypeScript", "NestJS", "Go", "React.js", "PostgreSQL", "Redis", "Kafka", "Kubernetes", "AWS", "GitLab CI/CD", "Material UI", "Power Automate", "Jest", "Supertest", "Grafana"]
   },
   {
     title: "Sr. DevOps and Software Engineer",
@@ -36,7 +37,7 @@ const experiences: Experience[] = [
       "Implemented monitoring with Prometheus, Grafana, and New Relic for proactive system health and alerting.",
       "Led AWS migration with zero downtime, leveraging EC2, ECS, ECR, VPC, CloudFormation, Load Balancers, and Auto Scaling."
     ],
-    technologies: ["TypeScript", "GoLang", "NestJS", "MongoDB/Mongoose", "AWS (EC2, ECS, ECR, SES, CloudFront, Route 53)", "Kafka", "gRPC", "Redis", "Prometheus", "Grafana", "New Relic", "Bare Metal"]
+    technologies: ["TypeScript", "Go", "NestJS", "MongoDB", "AWS", "Kafka", "gRPC", "Redis", "Docker", "ECS", "Prometheus", "Grafana", "New Relic", "Bare Metal", "React.js", "Jest", "Supertest"]
   },
   {
     title: "Sr. Software Engineer",
@@ -48,7 +49,7 @@ const experiences: Experience[] = [
       "Migrated codebase from JavaScript to TypeScript, improving type safety and maintainability.",
       "Set up a CI/CD pipeline to automate deployments, including integration, database seeding, and SQL migrations."
     ],
-    technologies: ["TypeScript", "JavaScript", "Node.js", "MySQL", "Redis", "Sequelize", "GitLab CI/CD", "Docker"]
+    technologies: ["Node.js", "TypeScript", "JavaScript", "React.js", "MongoDB", "MySQL", "Sequelize", "Swagger", "AWS", "Docker", "GitLab CI/CD", "Jest", "Supertest", "ELK", "Bitbucket", "Jira"]
   },
   {
     title: "Software Engineer",
@@ -62,7 +63,7 @@ const experiences: Experience[] = [
       "Contributed to architecture and scalability improvements across the platform.",
       "Transitioned the platform from monolith to microservices using Node.js, Angular, TypeScript, and Mongoose, deployed on AWS."
     ],
-    technologies: ["Node.js", "TypeScript", "Angular 4", "MongoDB", "Mongoose", "EJS", "Swagger", "AWS (SES, SNS, SQS, EC2, CloudFormation)", "Docker", "GitLab CI/CD"]
+    technologies: ["Node.js", "TypeScript", "JavaScript", "React.js", "MongoDB", "Mongoose", "EJS", "Swagger", "AWS (ECS, SES, SNS, SQS, EC2, CloudFormation)", "Docker", "GitLab CI/CD", "Mocha", "Chai", "ELK"]
   },
   {
     title: "Software Engineer",

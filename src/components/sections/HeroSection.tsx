@@ -19,13 +19,13 @@ export default function HeroSection() {
           <div className="h-px w-40 bg-gradient-to-r from-transparent via-[#00ff00] to-transparent my-4"></div>
           
           <h2 className="text-xl md:text-2xl lg:text-3xl text-[#00ff00] font-light tracking-widest typing-animation">
-            FULLSTACK ENGINEER & DEVOPS SPECIALIST
+            SDE 3 | BACKEND-HEAVY FULL STACK ENGINEER
           </h2>
-          
+
           <p className="max-w-2xl text-muted-foreground">
-            Specializing in building scalable systems and data pipelines. 
-            8+ years of experience with Node.js, TypeScript, GoLang, and AWS.
-            Currently spearheading Telematics systems processing 10M+ events daily.
+            8+ years building scalable distributed systems and SaaS platforms.
+            Designed systems handling 500K+ requests/min and 10M+ events/day.
+            Experienced in Node.js, Go, React, AWS, and LLM-based automation.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8">

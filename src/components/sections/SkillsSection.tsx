@@ -16,49 +16,84 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Languages",
     skills: [
-      { name: "JavaScript", level: 95 },
+      { name: "JavaScript (ES6+)", level: 95 },
       { name: "TypeScript", level: 90 },
-      { name: "GoLang", level: 80 },
-      { name: "Python", level: 70 },
+      { name: "Go / Golang", level: 80 },
     ],
   },
   {
-    name: "Frameworks & Libraries",
+    name: "Backend",
     skills: [
       { name: "Node.js", level: 95 },
+      { name: "NestJS", level: 88 },
       { name: "Express.js", level: 90 },
-      { name: "NestJS", level: 85 },
-      { name: "React", level: 80 },
+      { name: "GraphQL / gRPC", level: 80 },
+    ],
+  },
+  {
+    name: "Frontend",
+    skills: [
+      { name: "React.js", level: 82 },
+      { name: "Material UI", level: 80 },
+      { name: "HTML5 / CSS3", level: 78 },
     ],
   },
   {
     name: "Databases",
     skills: [
-      { name: "MySQL", level: 85 },
       { name: "PostgreSQL", level: 85 },
       { name: "MongoDB", level: 90 },
-      { name: "Redis", level: 80 },
+      { name: "MySQL", level: 85 },
+      { name: "Redis", level: 85 },
       { name: "DynamoDB", level: 75 },
     ],
   },
   {
-    name: "DevOps & Cloud",
+    name: "Cloud & DevOps",
     skills: [
-      { name: "AWS", level: 85 },
+      { name: "AWS", level: 88 },
       { name: "Docker", level: 90 },
       { name: "Kubernetes", level: 80 },
-      { name: "CI/CD", level: 85 },
-      { name: "Prometheus/Grafana", level: 80 },
+      { name: "Terraform", level: 72 },
+      { name: "GitLab CI/CD", level: 85 },
     ],
   },
   {
-    name: "Others",
+    name: "Streaming & Observability",
     skills: [
-      { name: "Microservices", level: 90 },
       { name: "Kafka", level: 85 },
-      { name: "gRPC", level: 80 },
-      { name: "ElasticSearch", level: 70 },
-      { name: "HAProxy", level: 65 },
+      { name: "Prometheus / Grafana", level: 82 },
+      { name: "New Relic", level: 80 },
+      { name: "ELK Stack", level: 78 },
+      { name: "Sentry", level: 75 },
+    ],
+  },
+  {
+    name: "AI & Automation",
+    skills: [
+      { name: "Claude (Anthropic)", level: 85 },
+      { name: "OpenAI API", level: 82 },
+      { name: "Prompt Engineering", level: 85 },
+      { name: "LLM Integration", level: 80 },
+    ],
+  },
+  {
+    name: "Web3 & Blockchain",
+    skills: [
+      { name: "Solana", level: 85 },
+      { name: "RPC Nodes", level: 90 },
+      { name: "Validators", level: 80 },
+      { name: "Bare Metal Infra", level: 82 },
+      { name: "DeFi APIs", level: 78 },
+    ],
+  },
+  {
+    name: "Testing & Architecture",
+    skills: [
+      { name: "Jest / Supertest", level: 85 },
+      { name: "Mocha / Chai", level: 80 },
+      { name: "Microservices", level: 92 },
+      { name: "Event-Driven Architecture", level: 88 },
     ],
   },
 ];
@@ -73,7 +108,7 @@ export default function SkillsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-8">
-            {skillCategories.slice(0, 3).map((category, idx) => (
+            {skillCategories.slice(0, Math.ceil(skillCategories.length / 2)).map((category, idx) => (
               <div key={idx} className="space-y-4">
                 <h3 className="text-xl font-mono text-[#00ff00] mb-3 terminal-text">{category.name}</h3>
                 <div className="space-y-3">
@@ -96,7 +131,7 @@ export default function SkillsSection() {
           </div>
 
           <div className="space-y-8">
-            {skillCategories.slice(3).map((category, idx) => (
+            {skillCategories.slice(Math.ceil(skillCategories.length / 2)).map((category, idx) => (
               <div key={idx} className="space-y-4">
                 <h3 className="text-xl font-mono text-[#00ff00] mb-3 terminal-text">{category.name}</h3>
                 <div className="space-y-3">
@@ -124,10 +159,12 @@ export default function SkillsSection() {
             <div className="font-mono text-[#00ff00] text-sm">
               <p className="mb-2">{'>'} ANALYZING SKILL PATTERNS...</p>
               <p className="mb-2">{'>'} PRIMARY STRENGTHS DETECTED:</p>
-              <p className="mb-2">{'>'} ■ Full Stack Development with Node.js/TypeScript</p>
-              <p className="mb-2">{'>'} ■ DevOps & Cloud Architecture on AWS</p>
-              <p className="mb-2">{'>'} ■ Data Pipeline & Real-time Processing Systems</p>
-              <p className="mb-2">{'>'} ■ Microservices Architecture & Design</p>
+              <p className="mb-2">{'>'} ■ Backend Systems with Node.js / Go / TypeScript</p>
+              <p className="mb-2">{'>'} ■ Distributed Systems & Event-Driven Architecture</p>
+              <p className="mb-2">{'>'} ■ Cloud Infrastructure & DevOps on AWS</p>
+              <p className="mb-2">{'>'} ■ Real-time Data Pipelines & Kafka Streaming</p>
+              <p className="mb-2">{'>'} ■ Solana RPC Nodes & Web3 Infrastructure</p>
+              <p className="mb-2">{'>'} ■ LLM Integration & AI-Assisted Engineering</p>
               <p>{'>'} SKILL ANALYSIS COMPLETE ✓</p>
             </div>
           </TerminalSection>

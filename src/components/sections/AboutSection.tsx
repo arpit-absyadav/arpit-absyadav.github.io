@@ -13,15 +13,14 @@ export default function AboutSection() {
           <div>
             <h3 className="text-xl font-mono text-[#00ff00] mb-4 terminal-text">Profile</h3>
             <p className="mb-4 text-muted-foreground">
-              I'm a seasoned Full Stack Engineer and DevOps Specialist with 8+ years of experience in building scalable applications, 
-              real-time data pipelines, and cloud infrastructure.
+              Backend-Heavy Full Stack Engineer with 8+ years of experience building scalable distributed systems and SaaS platforms across environments.
             </p>
             <p className="mb-4 text-muted-foreground">
-              Currently at Zemoso, I lead the Telematics module that processes 10M+ sensor events daily from over 15,000 connected vehicles, 
-              handling time-series data, fault alerts, and analytics.
+              Designed systems handling 500K+ requests/min and 10M+ events/day with focus on reliability and high availability.
+              Experienced in leading engineering teams, driving architecture decisions, and delivering at scale.
             </p>
             <p className="text-muted-foreground">
-              I excel at designing and maintaining infrastructure that handles high throughput, ensuring reliability and performance under scale.
+              Skilled in Node.js, Go, React, AWS, and LLM-based automation to improve engineering efficiency.
             </p>
           </div>
           
@@ -29,7 +28,6 @@ export default function AboutSection() {
             <TerminalSection title="about">
               <div className="text-[#00ff00]">
                 <p className="mb-2">{'>'} Location: Gurgaon, India</p> 
-                <p className="mb-2">{'>'} Email: arpit.absyadav@gmail.com</p>
                 <p className="mb-2">{'>'} Website: arpit-absyadav.github.io</p>
                 <p className="mb-2">{'>'} GitHub: github.com/arpit-absyadav</p>
                 <p>{'>'} LinkedIn: linkedin.com/in/arpitabsyadav</p>
